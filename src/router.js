@@ -3,9 +3,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Courses from "./pages/Courses";
-import Departament from "./pages/Department";
+import Department from "./pages/Department";
 import Professor from "./pages/Professor";
-// import Allocation from "./pages/Allocation";
+import Allocation from "./pages/Allocation";
 
 const routes = [
   {
@@ -20,20 +20,20 @@ const routes = [
     component: Courses,
   },
   {
-    path: "/departament",
-    name: "Departament",
-    component: Departament,
+    path: "/department",
+    name: "Department",
+    component: Department,
   },
   {
     path: "/professor",
     name: "Professor",
     component: Professor,
   },
-  //   {
-  //     path: "/allocations",
-  //     name: "Allocations",
-  //     component: Allocation,
-  //   },
+  {
+    path: "/allocations",
+    name: "Allocations",
+    component: Allocation,
+  },
 ];
 
 const Router = () => (

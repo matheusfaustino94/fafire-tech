@@ -16,8 +16,8 @@ const columns = [
   { value: "CPF", id: "cpf" },
   {
     value: "Department",
-    id: "departmentId",
-    // render: (department) => department.name,
+    id: "department",
+    render: (department) => department.name,
   },
 ];
 
@@ -45,7 +45,7 @@ const Professor = () => {
     {
       name: "Edit",
       action: ({ id, name, cpf, department: { id: departmentId } }) => {
-        setProfessor({ id, name, cpf, department: { id: departmentId } });
+        setProfessor({ id, name, cpf, departmentId });
         setVisible(true);
       },
     },
@@ -128,7 +128,7 @@ const Professor = () => {
                   value={professor.name}
                 />
               </Form.Group>
-              <Form.Group>
+              <Form.Group className="mt-4">
                 <Form.Label>Professor CPF</Form.Label>
                 <Form.Control
                   name="cpf"
@@ -136,7 +136,7 @@ const Professor = () => {
                   value={professor.cpf}
                 />
               </Form.Group>
-              <Form.Group>
+              <Form.Group className="mt-4">
                 <Form.Label>Department</Form.Label>
                 <select
                   className="form-control"

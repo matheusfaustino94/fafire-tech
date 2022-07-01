@@ -10,7 +10,7 @@ const TableComponent = ({ actions, columns = [], items = [], refetch }) => {
       <thead>
         <tr>
           {columns.map((column, index) => (
-            <th key={index}>{column.value}</th>
+            <th key={`thead-tr-${index}`}>{column.value}</th>
           ))}
 
           {actions && <th>Actions</th>}
@@ -18,26 +18,27 @@ const TableComponent = ({ actions, columns = [], items = [], refetch }) => {
       </thead>
       <tbody>
         {items.map((item, index) => (
-          <tr key={index}>
+          <tr key={`tbody-tr-${index}`}>
             {columns.map((column, indexColumn) => {
               const value = item[column.id];
 
               return (
-                <td key={indexColumn}>
+                <td key={`td-${indexColumn}-${value}`}>
                   {column.render ? column.render(value) : value}
                 </td>
               );
             })}
             {actions && (
-              <td key={`${index}+1`}>
+              <td key={`${index}-${Math.random()}`}>
                 <Dropdown>
                   <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                     Actions
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    {actions.map((action) => (
+                    {actions.map((action, index) => (
                       <Dropdown.Item
+                        key={`actions-option-${index}`}
                         onClick={() => action.action(item, refetch)}
                       >
                         {action.name}
